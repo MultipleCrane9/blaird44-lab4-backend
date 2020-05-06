@@ -35,14 +35,14 @@ app.get("/params", (request, response) => {
     response.send({
     //req.query is a reference to arguments in the POST body
     message: "Hello, " + request.query.name + "! You sent a GET Request"
-    })
+})
     } else {
     response.status(400)
-    response.send({
-    message: "Missing required information"
-    })
+        response.send({
+        message: "Missing required information"
+        })
     }
-   })
+})
    
    app.post("/params", (request, response) => {
     if (request.body.name) {
