@@ -9,6 +9,10 @@ const bodyParser = require("body-parser");
 //This allows parsing of the body of POST requests, that are encoded in JSON
 app.use(bodyParser.json())
 
+app.use('/phish', middleware.checkToken, require('./routes/phish.js')) 
+
+app.use('/auth', require('./routes/login.js')) 
+
 app.use('/auth', require('./routes/register.js')) 
 
 app.use('/hello', require('./routes/hello.js'))
@@ -48,7 +52,7 @@ app.get("/", (request, response) => {
  * Serve the API documentation genertated by apidoc as HTML. 
  * https://apidocjs.com/
  */
-// app.use("/doc", express.static('apidoc'))
+app.use("/doc", express.static('apidoc'))
 
 /* 
 * Heroku will assign a port you can use via the 'PORT' environment variable
