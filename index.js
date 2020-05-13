@@ -11,9 +11,15 @@ app.use(bodyParser.json())
 
 app.use('/phish', middleware.checkToken, require('./routes/phish.js')) 
 
+app.use('/auth', require('./routes/register.js')) 
+
 app.use('/auth', require('./routes/login.js')) 
 
-app.use('/auth', require('./routes/register.js')) 
+app.use('/auth', middleware.checkToken, require('./routes/pushyregister.js'))
+
+app.use('/chats', middleware.checkToken, require('./routes/chats.js'))
+
+app.use('/messages', middleware.checkToken, require('./routes/messages.js'))
 
 app.use('/hello', require('./routes/hello.js'))
    
